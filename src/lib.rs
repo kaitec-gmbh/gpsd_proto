@@ -372,10 +372,12 @@ pub struct Sky {
     /// Time/date stamp in ISO8601 format, UTC. May have a fractional part of up
     /// to .001 sec precision (avalable from gpsd v3.25). 
     pub time: Option<String>,
-    /// Number of used sattelites (avalable from gpsd v3.25)
+    ///Number of satellite objects in "satellites" array
+    #[serde(rename = "nSat")]
+    pub n_sat: Option<i32>,
+    /// Number of satellites used in navigation solution (avalable from gpsd v3.25)
     #[serde(rename = "uSat")]
-    #[serde(default)]
-    pub u_sat: i32,
+    pub u_sat: Option<i32>,
 }
 
 /// This message is emitted each time the daemon sees a valid PPS (Pulse Per
